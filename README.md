@@ -1,94 +1,157 @@
-# 📦 Rewards API - Spring Boot Application
+# Rewards API
 
-A Spring Boot REST API that calculates **customer reward points** based on their monthly transaction history.
+This is a Spring Boot REST API that calculates customer reward points based on their transaction history.
+
+The reward logic is as follows:
+- $1 spent over $50 earns 1 point.
+- $1 spent over $100 earns 2 points.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
+```text
 rewards-api/
-├── controller/ # Exposes REST API endpoints (RewardController.java)
-├── services/ # Contains business logic (TransactionServices.java)
-├── model/ # (If any) contains POJOs like Transaction, RewardSummary
-├── mock/ # Holds dummy transaction data (MockTransactionData.java)
-├── exception/ # Custom and global exception handling
-│ ├── CustomerNotFoundException.java
-│ └── GlobalExceptionHandler.java
-├── RewardsApiApplicationTests.java # JUnit tests for controller
-└── pom.xml # Maven dependencies
-
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/xyzcompany/rewards/
+│   │           ├── controller/
+│   │           │   └── RewardController.java
+│   │           ├── exception/
+│   │           │   └── CustomerNotFoundException.java
+│   │           ├── model/
+│   │           │   └── Transaction.java
+│   │           ├── service/
+│   │           │   └── TransactionServices.java
+│   │           ├── Mock/
+│   │           │   └── MockTransactionData.java
+│   │           └── RewardsApiApplication.java
+│
+│   └── test/
+│       └── java/
+│           └── com/xyzcompany/rewards/
+│               ├── TransactionServicesTest.java
+│               ├── RewardControllerTest.java
+│               └── RewardsApiIntegrationTest.java
+│
+├── pom.xml
+└── README.md
+```
 
 ---
 
-## 🔧 Technologies Used
+## Technologies Used
 
 - Java 17
 - Spring Boot 3.4.5
-- Spring Web
-- Spring Validation
-- JUnit 5 (for testing)
-- Mockito (for mocking services)
+- Maven
+- JUnit 5
+- Mockito
+- Spring Boot Starter Test
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- Java 17
 - Maven
 
----
+### Build the Project
 
-## 🎯 Core Features
+```bash
+mvn clean install
+```
 
-- 🔹 Calculates rewards based on transaction amount:
-    - $50–100: 1 point per dollar over $50
-    - Above $100: 2 points per dollar over $100 + 1 point per dollar between $50–100
-- 🔹 Returns total rewards per month for each customer
-- 🔹 Provides REST APIs to:
-    - Fetch rewards for all customers
-    - Fetch rewards for a specific customer
-- 🔹 Exception handling for invalid customer IDs
+### Run the Application
 
----
+```bash
+mvn spring-boot:run
+```
 
-## 🧪 Mock Logic
-
-Transactions are mocked using `MockTransactionData.java`. You can customize these for testing/demo purposes without connecting to a real database.
+The application will start at:  
+`http://localhost:8080`
 
 ---
 
-## 🚀 API Endpoints
+## API Endpoint
 
-| Method | Endpoint              | Description                        |
-|--------|-----------------------|------------------------------------|
-| GET    | `/api/rewards`        | Get reward summary for all users   |
-| GET    | `/api/rewards/{id}`   | Get reward summary for a customer  |
+### `GET /rewards/{customerId}`
+
+Returns monthly and total reward points for the given customer.
+
+#### Example
+
+```http
+GET http://localhost:8080/rewards/1
+```
+
+#### Sample Response
+
+```json
+{
+  "customerId": 1,
+  "customerName": "Mukund",
+  "monthlyRewards": {
+    "MAY": 210
+  },
+  "totalRewards": 210
+}
+```
+
+#### Error Response
+
+```json
+{
+  "message": "Customer with ID 10 not found"
+}
+```
 
 ---
 
-## ⚙️ How to Run the Project
+## Mock Data – Sample Customers
 
-### 💻 Using IDE (IntelliJ/Eclipse)
-1. Open the project.
-2. Run the application using your IDE or use:
+The following customers are available in the in-memory mock dataset:
 
+- Mukund
+- Sadhana
 
-### 🧪 Test with Postman or Browser
-- **All Rewards**: `http://localhost:8080/api/rewards`
-- **Customer Rewards**: `http://localhost:8080/api/rewards/1`
+Each has transactions across multiple months.
 
-### ✅ Run JUnit Tests
+---
+
+## Running Tests
+
+### Unit Tests
+
 ```bash
 mvn test
+```
 
-| Folder/File                           | Purpose                                        |
-| ------------------------------------- | ---------------------------------------------- |
-| `controller/RewardController`         | Handles API requests and delegates to service  |
-| `services/TransactionServices`        | Business logic for calculating reward points   |
-| `mock/MockTransactionData`            | Provides hard-coded transaction data           |
-| `exception/GlobalExceptionHandler`    | Customizes error messages and status codes     |
-| `exception/CustomerNotFoundException` | Thrown if user ID is invalid                   |
-| `RewardsApiApplicationTests`          | JUnit + MockMvc tests for controller endpoints |
+Covers:
+- `TransactionServicesTest`
+- `RewardControllerTest`
 
-📌 Future Improvements
-Add database support (JPA + MySQL/PostgreSQL)
+### Integration Tests
 
-Swagger/OpenAPI documentation
+```bash
+mvn verify
+```
 
-Authentication (JWT/Spring Security)
+Covers:
+- `RewardsApiIntegrationTest` — full request-response cycle
 
-UI dashboard for visualizing points
+---
+
+## Notes
+
+- The project uses mock data only (no database).
+- Easily extendable to integrate with a real database.
+
+---
+
+## License
+
+This project is for educational and internal demo purposes.

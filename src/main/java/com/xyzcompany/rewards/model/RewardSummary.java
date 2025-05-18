@@ -2,12 +2,30 @@ package com.xyzcompany.rewards.model;
 
 import java.util.Map;
 import java.util.Objects;
-
+/**
+ * Represents the summary of reward points earned by a customer.
+ *
+ * This model contains the customer's basic information and a breakdown
+ * of their reward points per month as well as the total accumulated points.
+ */
 public class RewardSummary {
-
+    /**
+     * Unique ID of the customer.
+     */
     private int customerId;
+    /**
+     * Full name of the customer.
+     */
     private String customerName;
+    /**
+     * Monthly breakdown of reward points.
+     * The key is the month name (e.g., "Jan", "Feb") and the value is the reward points earned.
+     */
     private Map<String, Integer> monthlyRewards;
+
+    /**
+     * Total reward points accumulated by the customer across all months.
+     */
     private int totalRewards;
 
     public RewardSummary() {}

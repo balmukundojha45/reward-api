@@ -3,12 +3,30 @@ package com.xyzcompany.rewards.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
-
+/**
+ * Represents a single customer transaction.
+ *
+ * This class is used as part of the mock data source for calculating
+ * reward points based on purchase amount and transaction date.
+ */
 public class Transaction {
-
+    /**
+     * ID of the customer who made the transaction.
+     */
     private Long customerId;
+    /**
+     * Name of the customer who made the transaction.
+     */
+
     private String customerName;
+
+    /**
+     * Amount spent in the transaction.
+     */
     private double amount;
+    /**
+     * Date when the transaction occurred.
+     */
     private LocalDate transactionDate;
 
     public Transaction() {}

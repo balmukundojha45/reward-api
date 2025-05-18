@@ -9,6 +9,11 @@ import java.time.format.TextStyle;
 import java.util.*;
 /**
  * Service class containing business logic for reward point calculation.
+ * Calculates the reward points for a customer across all available transactions.
+ * *@param customerName Name of the customer whose rewards need to be calculated.
+ * @return A map containing rewards for each month and total.
+ * *@throws CustomerNotFoundException if customer name is not found in the data source.
+ *
  */
 @Service
 public class TransactionServices {
@@ -51,7 +56,7 @@ public class TransactionServices {
          *  - 2 points for every dollar spent over $100
          *  - 1 point for every dollar spent over $50 up to $100
          */
-        private int calculateRewardPoints(double amount) {
+        public int calculateRewardPoints(double amount) {
             int points = 0;
             if (amount > 100) {
                 points += (int) (2 * (amount - 100));
