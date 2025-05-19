@@ -1,4 +1,4 @@
-package com.xyzcompany.rewards.exception;
+package com.chartered.rewards.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

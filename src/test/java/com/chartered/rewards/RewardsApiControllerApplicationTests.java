@@ -1,8 +1,8 @@
-package com.xyzcompany.rewards;
+package com.chartered.rewards;
 
-import com.xyzcompany.rewards.controller.RewardController;
-import com.xyzcompany.rewards.mock.MockTransactionData;
-import com.xyzcompany.rewards.services.TransactionServices;
+import com.chartered.rewards.controller.RewardController;
+import com.chartered.rewards.mock.MockTransactionData;
+import com.chartered.rewards.services.TransactionServices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

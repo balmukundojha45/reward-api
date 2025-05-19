@@ -1,6 +1,6 @@
-package com.xyzcompany.rewards.mock;
+package com.chartered.rewards.mock;
 
-import com.xyzcompany.rewards.model.Transaction;
+import com.chartered.rewards.model.Transaction;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.xyzcompany.rewards.model;
+package com.chartered.rewards.model;
 
 import java.util.Objects;
 

@@ -1,8 +1,8 @@
-package com.xyzcompany.rewards;
+package com.chartered.rewards;
 
-import com.xyzcompany.rewards.exception.CustomerNotFoundException;
-import com.xyzcompany.rewards.model.RewardSummary;
-import com.xyzcompany.rewards.services.TransactionServices;
+import com.chartered.rewards.exception.CustomerNotFoundException;
+import com.chartered.rewards.model.RewardSummary;
+import com.chartered.rewards.services.TransactionServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

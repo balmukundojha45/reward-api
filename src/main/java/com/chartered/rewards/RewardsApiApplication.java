@@ -1,4 +1,4 @@
-package com.xyzcompany.rewards;
+package com.chartered.rewards;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

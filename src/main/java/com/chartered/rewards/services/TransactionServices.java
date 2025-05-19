@@ -1,7 +1,7 @@
-package com.xyzcompany.rewards.services;
+package com.chartered.rewards.services;
 
-import com.xyzcompany.rewards.model.RewardSummary;
-import com.xyzcompany.rewards.model.Transaction;
+import com.chartered.rewards.model.RewardSummary;
+import com.chartered.rewards.model.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

@@ -1,10 +1,10 @@
-package com.xyzcompany.rewards.controller;
+package com.chartered.rewards.controller;
 
-import com.xyzcompany.rewards.exception.CustomerNotFoundException;
-import com.xyzcompany.rewards.mock.MockTransactionData;
-import com.xyzcompany.rewards.model.RewardSummary;
-import com.xyzcompany.rewards.model.Transaction;
-import com.xyzcompany.rewards.services.TransactionServices;
+import com.chartered.rewards.mock.MockTransactionData;
+import com.chartered.rewards.model.Transaction;
+import com.chartered.rewards.services.TransactionServices;
+import com.chartered.rewards.exception.CustomerNotFoundException;
+import com.chartered.rewards.model.RewardSummary;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

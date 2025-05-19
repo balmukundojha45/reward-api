@@ -1,4 +1,4 @@
-package com.xyzcompany.rewards.exception;
+package com.chartered.rewards.exception;
 /**
  * Custom exception to be thrown when a customer is not found
  * while querying for their rewards.
