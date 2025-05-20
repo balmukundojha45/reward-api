@@ -3,9 +3,10 @@ package com.chartered.rewards.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+
 /**
  * Represents a single customer transaction.
- *
+ * <p>
  * This class is used as part of the mock data source for calculating
  * reward points based on purchase amount and transaction date.
  */
@@ -29,7 +30,8 @@ public class Transaction {
      */
     private LocalDate transactionDate;
 
-    public Transaction() {}
+    public Transaction() {
+    }
 
     public Transaction(Long customerId, String customerName, double amount, LocalDate transactionDate) {
         this.customerId = customerId;

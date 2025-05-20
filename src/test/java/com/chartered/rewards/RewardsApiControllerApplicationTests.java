@@ -16,6 +16,7 @@ import java.util.Collections;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 /**
  * Unit tests for RewardApiControllerApplicationTest using MockMvc.
  * Validates REST endpoint response and error handling.
@@ -25,32 +26,34 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(RewardController.class)
 class RewardsApiControllerApplicationTests {
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@MockBean
-	private TransactionServices transactionServices;
-	/**
-	 * Tests that test GetAllRewards.
-	 */
-	@Test
-	public void testGetAllRewards() throws Exception {
-		when(transactionServices.calculateMonthlyRewards(MockTransactionData.getTransactions()))
-				.thenReturn(Collections.emptyList());
+    @MockBean
+    private TransactionServices transactionServices;
 
-		mockMvc.perform(get("/api/rewards"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType("application/json"));
-	}
-	/**
-	 * Tests that an customer not found.
-	 */
-	@Test
-	public void testGetRewardsByCustomerId_NotFound() throws Exception {
-		when(transactionServices.calculateMonthlyRewards(MockTransactionData.getTransactions()))
-				.thenReturn(Collections.emptyList());
+    /**
+     * Tests that test GetAllRewards.
+     */
+    @Test
+    public void testGetAllRewards() throws Exception {
+        when(transactionServices.calculateMonthlyRewards(MockTransactionData.getTransactions()))
+                .thenReturn(Collections.emptyList());
 
-		mockMvc.perform(get("/api/rewards/99"))
-				.andExpect(status().isNotFound());
-	}
+        mockMvc.perform(get("/api/rewards"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"));
+    }
+
+    /**
+     * Tests that an customer not found.
+     */
+    @Test
+    public void testGetRewardsByCustomerId_NotFound() throws Exception {
+        when(transactionServices.calculateMonthlyRewards(MockTransactionData.getTransactions()))
+                .thenReturn(Collections.emptyList());
+
+        mockMvc.perform(get("/api/rewards/99"))
+                .andExpect(status().isNotFound());
+    }
 }

@@ -7,7 +7,8 @@ public class Customer {
     private Long id;
     private String name;
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public Customer(Long id, String name) {
         this.id = id;
@@ -29,7 +30,6 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-
 
 
     @Override

@@ -1,9 +1,10 @@
 package com.chartered.rewards.exception;
+
 /**
  * Custom exception to be thrown when a customer is not found
  * while querying for their rewards.
  */
-public class CustomerNotFoundException extends Exception{
+public class CustomerNotFoundException extends Exception {
     /**
      * Constructor for the exception with a custom message.
      *

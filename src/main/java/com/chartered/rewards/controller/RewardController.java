@@ -27,17 +27,19 @@ public class RewardController {
     public RewardController(TransactionServices transactionServices) {
         this.transactionServices = transactionServices;
     }
+
     /**
      * GET endpoint to retrieve reward summaries for all customers.
      *
      * @return List of reward summaries.
      */
     @GetMapping
-        public ResponseEntity<List<RewardSummary>> getAllRewards() {
-            List<Transaction> transactions = MockTransactionData.getTransactions();
-            List<RewardSummary> rewards = transactionServices.calculateMonthlyRewards(transactions);
-            return ResponseEntity.ok(rewards);
-        }
+    public ResponseEntity<List<RewardSummary>> getAllRewards() {
+        List<Transaction> transactions = MockTransactionData.getTransactions();
+        List<RewardSummary> rewards = transactionServices.calculateMonthlyRewards(transactions);
+        return ResponseEntity.ok(rewards);
+    }
+
     /**
      * GET endpoint to retrieve reward summary for a specific customer by ID.
      *
@@ -53,8 +55,8 @@ public class RewardController {
                 .findFirst()
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer with ID " + customerId + " not found"));
-        }
     }
+}
 
 
 

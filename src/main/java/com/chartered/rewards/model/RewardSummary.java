@@ -2,9 +2,10 @@ package com.chartered.rewards.model;
 
 import java.util.Map;
 import java.util.Objects;
+
 /**
  * Represents the summary of reward points earned by a customer.
- *
+ * <p>
  * This model contains the customer's basic information and a breakdown
  * of their reward points per month as well as the total accumulated points.
  */
@@ -28,7 +29,8 @@ public class RewardSummary {
      */
     private int totalRewards;
 
-    public RewardSummary() {}
+    public RewardSummary() {
+    }
 
     public RewardSummary(int customerId, String customerName, Map<String, Integer> monthlyRewards, int totalRewards) {
         this.customerId = customerId;
@@ -76,6 +78,7 @@ public class RewardSummary {
         RewardSummary that = (RewardSummary) o;
         return totalRewards == that.totalRewards && Objects.equals(customerId, that.customerId) && Objects.equals(customerName, that.customerName) && Objects.equals(monthlyRewards, that.monthlyRewards);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(customerId, customerName, monthlyRewards, totalRewards);
